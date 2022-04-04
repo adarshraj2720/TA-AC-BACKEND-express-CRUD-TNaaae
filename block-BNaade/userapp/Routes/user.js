@@ -7,6 +7,16 @@ router.get('/new',(req,res)=>{
     res.render('form');
 })
 
+//create
+router.post('/',(req,res,next)=>{
+    user.create(req.body,(err,updateUser)=>{
+        console.log(err,updateUser);
+        if(err) return next(err)
+        res.redirect('/user/new')
+    })
+})
+
+//read
 router.get('/',(req,res,next)=>{
     user.find({},(err,userlist)=>{
         console.log(err,userlist)
@@ -25,13 +35,7 @@ router.get('/:id',(req,res,next)=>{
 })
 
 
-router.post('/',(req,res,next)=>{
-    user.create(req.body,(err,updateUser)=>{
-        console.log(err,updateUser);
-        if(err) return next(err)
-        res.redirect('/user/new')
-    })
-})
+//update
 
 router.get('/:id/edit',(req,res,next)=>{
     var id = req.params.id;
