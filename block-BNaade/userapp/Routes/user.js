@@ -16,6 +16,7 @@ router.post('/',(req,res,next)=>{
     })
 })
 
+
 //read
 router.get('/',(req,res,next)=>{
     user.find({},(err,userlist)=>{
